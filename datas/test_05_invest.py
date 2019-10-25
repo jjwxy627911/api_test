@@ -16,6 +16,7 @@ from scripts.handle_context import Context
 from scripts.handle_configure import cf
 from scripts.handle_log import logger
 from scripts.constance import CASES_FILE_PATH
+from main import conf_env
 
 do_excel = HandleExcel(CASES_FILE_PATH, "invest")
 cases = do_excel.get_cases()
@@ -39,7 +40,7 @@ class TestInvest(unittest.TestCase):
     def test_invest(self, item):
         case_id = item["case_id"]
         title = item["title"]
-        url = cf.get_value("api", "prefix_url") + item["url"]
+        url = cf.get_value(conf_env, "prefix_url") + item["url"]
         method = item["method"]
         expected = item["expected"]
         data = item["data"]

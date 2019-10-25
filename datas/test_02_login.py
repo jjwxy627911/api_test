@@ -8,6 +8,7 @@
 import unittest
 from libs.ddt import ddt, data
 
+from main import conf_env
 from scripts.handle_excel import HandleExcel
 from scripts.handle_request import HandleRequest
 from scripts.handle_context import Context
@@ -36,7 +37,7 @@ class TestLogin(unittest.TestCase):
     def test_login(self, item):
         case_id = item["case_id"]
         title = item["title"]
-        url = cf.get_value("api", "prefix_url") + item["url"]
+        url = cf.get_value(conf_env, "prefix_url") + item["url"]
         method = item["method"]
         expected = item["expected"]
         data = item["data"]
